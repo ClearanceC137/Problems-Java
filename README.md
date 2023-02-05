@@ -1,2 +1,5 @@
 # Problems-Java
-Data structured and algorithms
+Data structureds
+algorithms
+string manipulation
+recursion
