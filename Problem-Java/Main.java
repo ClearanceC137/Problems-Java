@@ -276,6 +276,46 @@ public class Main {
 		}
 		return value*factorial(value-1);
 	}
-
+	/* -- Given an unsorted integer array , find a pair with a given sum -- */	
+	public static ArrayList<ArrayList<Integer>> SumPair(int []array , int sum){
+		ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+		// find the sum of a single value at index i with i+1 other elements whilst check if the sum 
+		// is equal to the variable passed
+		for(int i = 0 ; i < array.length ; i++) {
+			for( int j = i+1 ; j <array.length ; j++) {
+				if(array[i]+array[j] == sum) {
+					list.add(new ArrayList<Integer>(Arrays.asList(array[i],array[j])));
+				}
+			}
+		}
+		return list;
+	}
+	/* -- Given an integer array, find a contiguous
+	      sub array within it that has the largest sum -- */
+	public static int[] MaxSubArray(int [] array) {
+		int [] arr = new int[2];
+		int sum = 0;
+		// from index i continuously check if the sum is largest whilst 
+		// increasing the size of sub array
+		for(int i = 0 ; i < array.length ; i++) {
+			for( int j = i+1 ; j < array.length-1 ; j++) {
+				int currentsum = Sum(array , i , j);
+				if ( sum < currentsum) {
+					arr[0] = i;
+					arr[1] = j;
+					sum = currentsum;
+				}
+			}
+		}
+		return arr;
+	}
+	/* --  helper function which returns the sum of the array -- */
+	public static int Sum(int [] array , int lower , int upper) {
+		int sum = 0;
+		for(int i = lower ; i<= upper ; i++) {
+			sum+=array[i];
+		}
+		return sum ;
+	}
 
 }
